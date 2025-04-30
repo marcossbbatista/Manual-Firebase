@@ -34,6 +34,8 @@ cd nome_do_projeto
 
 - Clique em "Criar projeto" e aguarde.
 
+---
+
 ## 📱 Passo 3: Registrar o App no Firebase
 
 ## Android
@@ -65,3 +67,34 @@ android/app/google-services.json
 ```bash
 ios/Runner/GoogleService-Info.plist
 ```
+
+---
+
+## ⚙️ Passo 4: Configurar os Arquivos do Projeto
+
+## Android
+
+- No arquivo android/build.gradle, adicione:
+
+```bash
+buildscript {
+  dependencies {
+    classpath 'com.google.gms:google-services:4.4.0'
+  }
+}
+```
+
+- No arquivo android/app/build.gradle, adicione ao final:
+```bash
+apply plugin: 'com.google.gms.google-services'
+```
+
+
+## IOS
+
+- No arquivo ios/Podfile, defina:
+```bash
+platform :ios, '12.0'
+```
+
+---
