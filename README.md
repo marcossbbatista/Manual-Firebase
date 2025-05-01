@@ -57,9 +57,9 @@ defaultConfig {
         versionName = flutter.versionName
     }
 ```
-    - Apelido (opcional)
+- Apelido (opcional)
 
-    - SHA-1 (pode ser adicionado depois)
+- SHA-1 (pode ser adicionado depois)
 
 - Baixe o arquivo google-services.json e coloque em:
 ```bash
