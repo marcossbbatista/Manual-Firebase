@@ -44,8 +44,19 @@ cd nome_do_projeto
 
 - Preencha:
 
-    - Nome do pacote (ex: com.exemplo.meuapp)
-
+    - Para encontrar o nome do pacote, acesse o arquivo android/app/build.gradle e verifique o valor do campo applicationId:
+```bash
+defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.cineritz"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+```
     - Apelido (opcional)
 
     - SHA-1 (pode ser adicionado depois)
@@ -53,6 +64,39 @@ cd nome_do_projeto
 - Baixe o arquivo google-services.json e coloque em:
 ```bash
 android/app/google-services.json
+```
+
+Adicione o plug-in como dependência no arquivo  android/settings.gradle:
+
+```bash
+id("com.google.gms.google-services") version "4.4.2" apply false
+```
+
+Em seguida, no arquivo android/app/build.gradle, adicione:
+
+```bash
+plugins {
+  id("com.android.application")
+
+  // Add the Google services Gradle plugin
+  id("com.google.gms.google-services")
+
+  ...
+}
+
+dependencies {
+  // Import the Firebase BoM
+  implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+
+
+  // TODO: Add the dependencies for Firebase products you want to use
+  // When using the BoM, don't specify versions in Firebase dependencies
+  implementation("com.google.firebase:firebase-analytics")
+
+
+  // Add the dependencies for any other desired Firebase products
+  // https://firebase.google.com/docs/android/setup#available-libraries
+}
 ```
 
 ## IOS
@@ -68,38 +112,19 @@ android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
 ```
 
----
-
-## ⚙️ Passo 4: Configurar os Arquivos do Projeto
-
-## Android
-
-- No arquivo android/build.gradle, adicione:
+No arquivo ios/Runner/AppDelegate.swift, adicione:
 
 ```bash
-buildscript {
-  dependencies {
-    classpath 'com.google.gms:google-services:4.4.0'
-  }
-}
-```
-
-- No arquivo android/app/build.gradle, adicione ao final:
-```bash
-apply plugin: 'com.google.gms.google-services'
-```
-
-
-## IOS
-
-- No arquivo ios/Podfile, defina:
-```bash
-platform :ios, '12.0'
+import FirebaseCore
+...
+[UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+FirebaseApp.configure()
+...
 ```
 
 ---
 
-## 📦 Passo 5: Adicionar os Pacotes Firebase ao pubspec.yaml
+## 📦 Passo 4: Adicionar os Pacotes Firebase ao pubspec.yaml
 
 ## Adicione ao seu pubspec.yaml:
 
@@ -120,7 +145,7 @@ flutter pub get
 
 ---
 
-## 🧠 Passo 6: Inicializar o Firebase no Projeto
+## 🧠 Passo 5: Inicializar o Firebase no Projeto
 
 No seu main.dart:
 
@@ -152,7 +177,7 @@ class MyApp extends StatelessWidget {
 
 ---
 
-## 🧪 Passo 7: Testar a Conexão
+## 🧪 Passo 6: Testar a Conexão
 
 Execute o app:
 ```bash
@@ -183,3 +208,4 @@ As informações contidas neste manual foram baseadas nas seguintes fontes:
 - [Documentação oficial do Firebase para Flutter](https://firebase.flutter.dev/docs/overview)
 - [Documentação oficial do Firebase](https://firebase.google.com/docs)
 - [Flutter documentation](https://flutter.dev/docs)
+- [YouTube - Flutter Firebase Setup. In 5 minutes - (Android & IOS 2025) ](https://www.youtube.com/watch?v=z-JRQZSqQNc&list=WL&index=1)
