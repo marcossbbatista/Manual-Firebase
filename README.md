@@ -126,15 +126,12 @@ FirebaseApp.configure()
 
 ## 📦 Passo 4: Adicionar os Pacotes Firebase ao pubspec.yaml
 
-## Adicione ao seu pubspec.yaml:
+## Adicione os seguintes pacotes ao seu projeto:
 
 ```bash
-dependencies:
-  flutter:
-    sdk: flutter
-  firebase_core: ^3.0.0
-  firebase_auth: ^5.0.0
-  cloud_firestore: ^6.0.0
+flutter pub add firebase_core
+flutter pub add firebase_auth
+flutter pub add cloud_firestore
 
 ```
 
