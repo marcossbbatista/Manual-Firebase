@@ -162,7 +162,12 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+   try {
+    await Firebase.initializeApp();
+    print('🔥 Firebase inicializado com sucesso');
+  } catch (e) {
+    print('❌ Erro ao inicializar Firebase: $e');
+  }
   runApp(const MyApp());
 }
 
@@ -191,9 +196,9 @@ Execute o app:
 flutter run
 ```
 
-Se tudo estiver certo, o console mostrará algo como:
+Se cair no print de sucesso, está 100% conectado.
 ```bash
-[FirebaseCore] Firebase has been successfully initialized.
+🔥 Firebase inicializado com sucesso
 ```
 
 ---
