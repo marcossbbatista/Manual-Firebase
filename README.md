@@ -1,4 +1,4 @@
-# Manual: Como Vincular um Projeto Flutter (Dart) ao Firebase (2025)
+# Manual: Como Vincular um Projeto Flutter (Dart) ao Firebase (2026)
 
 ## ✅ Pré-requisitos
 
